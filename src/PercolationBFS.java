@@ -37,13 +37,17 @@ public class PercolationBFS extends PercolationDFSFast{
 			
 			
 			//add it to the queue, once it has been filled. Need to check its neighbors
-			if(isOpen(rowTemp-1,colTemp)) que.add((rowTemp-1)*myGrid.length + colTemp);
+			if(inBounds(rowTemp-1,colTemp)) 
+				if(isOpen(rowTemp-1,colTemp)) que.add((rowTemp-1)*myGrid.length + colTemp);
 			
-			if(isOpen(rowTemp+1,colTemp)) que.add((rowTemp+1)*myGrid.length + colTemp);
+			if(inBounds(rowTemp+1,colTemp)) 
+				if(isOpen(rowTemp+1,colTemp)) que.add((rowTemp+1)*myGrid.length + colTemp);
 			
-			if(isOpen(rowTemp,colTemp+1)) que.add((rowTemp)*myGrid.length + colTemp+1);
+			if(inBounds(rowTemp,colTemp+1))
+				if(isOpen(rowTemp,colTemp+1)) que.add((rowTemp)*myGrid.length + colTemp+1);
 			
-			if(isOpen(rowTemp,colTemp-1)) que.add((rowTemp)*myGrid.length + colTemp-1);
+			if(inBounds(rowTemp,colTemp-1)) 
+				if(isOpen(rowTemp,colTemp-1)) que.add((rowTemp)*myGrid.length + colTemp-1);
 		}
 	}
 	
