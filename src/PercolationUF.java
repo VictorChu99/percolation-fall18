@@ -17,7 +17,7 @@ public class PercolationUF implements IPercolate{
 	private final int VTOP;
 	private final int VBOTTOM;
 	
-	public PercolationUF(IUnionFind finder, int size) //should I switch the order of the parameters?
+	public PercolationUF( int size, IUnionFind finder) //should I switch the order of the parameters?
 	{
 		
 		myGrid = new boolean[size][size];

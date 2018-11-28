@@ -22,7 +22,7 @@ public class InteractivePercolationVisualizer {
 		//IPercolate perc = new PercolationBFS(N);
 		
 		//should I change QuickFind to QuickUWPC?
-		IPercolate perc = new PercolationUF(new QuickUWPC(),N); 
+		IPercolate perc = new PercolationUF(N, new QuickUWPC()); 
 
 		System.out.println(N);
 
