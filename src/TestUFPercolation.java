@@ -4,10 +4,13 @@ import org.junit.Test;
 public class TestUFPercolation {
 	
 	public IPercolate getPercolator(int size) {
+		
+		
 		IUnionFind finder = new QuickUWPC();
-		//IPercolate perc = new PercolationUF(finder,size);
-		//return perc;
-		return null;
+		IPercolate perc = new PercolationUF(finder,size);
+	
+		return perc;
+		//return null;
 	}
 		
 	/**
@@ -15,7 +18,11 @@ public class TestUFPercolation {
 	 */
 	@Test(timeout = 20000)
 	public void testUFIsOpen() {
+		
+		
+	
 		IPercolate uf = getPercolator(10);
+		
 		for (int i = 1; i < 10; i++)
 			for (int j = 0; j < 10; j++) {
 				uf.open(i, j);
