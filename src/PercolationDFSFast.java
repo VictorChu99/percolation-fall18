@@ -25,8 +25,8 @@ public class PercolationDFSFast extends PercolationDFS {
 		{
 			dfs(row,col);//case of top row. Mark as full
 		}
-		
-		
+		else
+		{
 		if(inBounds(row,col-1))
 			if(isFull(row,col-1)) dfs(row,col);
 		
@@ -38,7 +38,7 @@ public class PercolationDFSFast extends PercolationDFS {
 		
 		if(inBounds(row-1,col))
 			if(isFull(row-1,col)) dfs(row,col);
-		
+		}
 	}
 
 	
