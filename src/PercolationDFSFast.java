@@ -1,8 +1,8 @@
 import java.util.Arrays;
 
 public class PercolationDFSFast extends PercolationDFS {
-	protected int[][] myGrid;
-	protected int myOpenCount;
+	//protected int[][] myGrid;
+	//protected int myOpenCount;
 	/**
 	 * Initialize a grid so that all cells are blocked.
 	 * 
@@ -11,34 +11,52 @@ public class PercolationDFSFast extends PercolationDFS {
 	 */
 	public PercolationDFSFast(int n) {
 		super(n);
-		myGrid = new int[n][n];
-		myOpenCount = 0;
-		for (int[] row : myGrid)
-			Arrays.fill(row, BLOCKED);
+		
 	}
 	
 	@Override
 	protected void updateOnOpen(int row, int col) {
 		if(!inBounds(row,col)) return;
 		
-		if(row == 0) 
+		int count = 0;
+		
+		if(row == 0 && inBounds(row,col))
 		{
 			dfs(row,col);//case of top row. Mark as full
 		}
+		
+		
 		else
 		{
 		if(inBounds(row,col-1))
-			if(isFull(row,col-1)) dfs(row,col);
+			if(isFull(row,col-1)) 
+			{
+				count = 1;
+			}
 		
 		if(inBounds(row,col+1))
-			if(isFull(row,col+1)) dfs(row,col);
+			if(isFull(row,col+1)) 
+			{
+				
+				count = 1;
+			}
 		
 		if(inBounds(row+1,col))
-			if(isFull(row+1,col)) dfs(row,col);
+			if(isFull(row+1,col))
+			{
+				
+				count = 1;
+			}
 		
 		if(inBounds(row-1,col))
-			if(isFull(row-1,col)) dfs(row,col);
+			if(isFull(row-1,col)) 
+			{
+				
+				count = 1;
+			}
 		}
+		
+		if(count == 1) dfs(row,col);
 	}
 
 	

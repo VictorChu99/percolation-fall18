@@ -19,12 +19,12 @@ public class InteractivePercolationVisualizer {
 			N = Integer.parseInt(args[0]);
 		}
 
-		//IPercolate perc = new PercolationBFS(N);
+		IPercolate perc = new PercolationBFS(N);
 		
 		//should I change QuickFind to QuickUWPC?
-		IPercolate perc = new PercolationUF(N, new QuickUWPC()); 
+		//IPercolate perc = new PercolationUF(N, new QuickUWPC()); 
 
-		System.out.println(N);
+		
 
 		// number of sites opened
 		int opened = 0;
