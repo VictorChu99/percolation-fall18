@@ -17,12 +17,14 @@ public class PercolationUF implements IPercolate{
 	private final int VTOP;
 	private final int VBOTTOM;
 	
+	//constructor
 	public PercolationUF( int size, IUnionFind finder) //should I switch the order of the parameters?
 	{
 		
-		myGrid = new boolean[size][size];
+		myGrid = new boolean[size][size];//create our grid
 		myOpenCount = 0;
 		
+		//important for checking if the system percolates- check if VTOp and VBOTTOM in the same set
 		VTOP = size * size;
 		VBOTTOM = size * size + 1;
 		finder.initialize(size*size + 2);
@@ -40,16 +42,16 @@ public class PercolationUF implements IPercolate{
 		
 		
 		// TODO Auto-generated method stub
-		if (!inBounds(row,col)) {
+		if (!inBounds(row,col)) {//check exceptions first
 			throw new IndexOutOfBoundsException(
 					String.format("(%d,%d) not in bounds", row,col));
 		}
 		if (myGrid[row][col] != false)
 			return;
-		myOpenCount += 1;
+		myOpenCount += 1;//increase our open count
 		myGrid[row][col] = true;
 		
-		//check the four neighbors
+		//check the four neighbors. Essentially, we then add these to a union together
 				if(inBounds(row+1,col)) {
 				if( myGrid[row+1][col] == true) {
 					myFinder.union(indexValue(row,col),indexValue(row+1,col));
@@ -89,7 +91,7 @@ public class PercolationUF implements IPercolate{
 	
 	}
 
-	@Override
+	@Override//check if the cell is open or not
 	public boolean isOpen(int row, int col) {
 		if (!inBounds(row,col)) {
 			throw new IndexOutOfBoundsException(
@@ -98,7 +100,7 @@ public class PercolationUF implements IPercolate{
 		return myGrid[row][col];
 	}
 
-	@Override
+	@Override//checks if the cell is full or not
 	public boolean isFull(int row, int col) {
 		// TODO Auto-generated method stub
 		if (!inBounds(row,col)) {
@@ -115,7 +117,7 @@ public class PercolationUF implements IPercolate{
 	@Override
 	public boolean percolates() {
 		// TODO Auto-generated method stub
-		if(myFinder.connected(VTOP, VBOTTOM))return true;
+		if(myFinder.connected(VTOP, VBOTTOM))return true;//if VTOP and VBOTTOM are connected- the system percolates
 		
 		return false;
 	}
@@ -126,7 +128,8 @@ public class PercolationUF implements IPercolate{
 		return myOpenCount;
 	}
 	
-	public int indexValue(int row, int col)
+	public int indexValue(int row, int col)//we need the indexValue and just have quick method,
+											//since we use these index values so much
 	{
 		return row * myGrid.length + col;
 	}

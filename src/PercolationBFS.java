@@ -10,18 +10,17 @@ public class PercolationBFS extends PercolationDFSFast {
 	@Override
 	protected void dfs(int row, int col) {// breadth first search looks at children first, hence the name breadth
 
-		System.out.println("!!!");
-		System.out.println(isFull(row, col) +" "+!isOpen(row, col));
+		
 		Queue<Integer> que = new LinkedList<>();
 		
-		if (!inBounds(row, col))
+		if (!inBounds(row, col))//just check our exceptions
 			return;
 		// full or NOT open, don't process
 		if (isFull(row, col) || !isOpen(row, col))
 			return;
 
 		myGrid[row][col] = FULL;
-		que.add(row * myGrid.length + col);
+		que.add(row * myGrid.length + col);//add to our queue first
 
 		while (que.size() != 0) {// queue is first in, first out. keeps going until no more neighbors are checked
 
@@ -37,7 +36,6 @@ public class PercolationBFS extends PercolationDFSFast {
 			int rowTemp = newBlock / myGrid.length;
 
 			// add it to the queue, once it has been filled. Need to check its neighbors
-
 			if (inBounds(rowTemp - 1, colTemp))
 				if (isOpen(rowTemp - 1, colTemp) && !isFull(rowTemp - 1, colTemp)) {
 					myGrid[rowTemp - 1][colTemp] = FULL;

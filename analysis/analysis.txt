@@ -1,22 +1,71 @@
-Your name
-Your netid
-
-Copy/Paste results from PercolationStats using PercolationDFS
-
+Victor Chu
+vic4
 
 Copy/Paste results from PercolationStats using PercolationDFSFast
 
+simulation data for 20 trials
+grid	mean	stddev	time
+100	0.593	0.014	0.112
+200	0.591	0.010	0.102
+400	0.590	0.006	0.781
+800	0.594	0.004	5.192
+Exception in thread "main" java.lang.StackOverflowError
 
 Copy/Paste results from PercolationStats using PercolationBFS
+simulation data for 20 trials
+grid	mean	stddev	time
+100	0.593	0.014	0.174
+200	0.591	0.010	0.118
+400	0.590	0.006	0.781
+800	0.594	0.004	5.553
+1600	0.592	0.002	30.611
+3200	0.593	0.001	320.341
 
 
 Copy/Paste results from PercolationStats using PercolationUF 
 with the QuickUWPC UnionFind implementation.
 
+simulation data for 20 trials
+grid	mean	stddev	time
+100	0.593	0.014	0.119
+200	0.591	0.010	0.172
+400	0.590	0.006	1.021
+800	0.594	0.004	5.368
+1600	0.592	0.002	32.961
+3200	0.593	0.001	160.584
+
+
 1. How does doubling the grid size affect running time (keeping # trials fixed)
+
+This is exponential trend. This is O(N^2) since it is exponential. My equation
+for this trend was  y= (2E^-05)x^2 + 0.0063x - 2.8271. I got this function
+by plotting points in excel and fitting a line to it. 
 
 
 2. How does doubling the number of trials affect running time.
 
+I doubled the number of trials to 40 and used PercolationUF to run stats. 
+As shown below, it roughly doubled the time it takes to percolate. 
+
+simulation data for 40 trials
+grid	mean	stddev	time
+100	0.594	0.015	0.160
+200	0.591	0.009	0.232
+400	0.591	0.005	1.255
+800	0.593	0.004	7.678
+1600	0.593	0.002	55.912
+3200	0.593	0.001	194.534
+
+
 
 3. Estimate the largest grid size you can run in 24 hours with 20 trials. Explain your reasoning.
+
+Since I modeled my run time using the function y= (2E^-05)x^2 + 0.0063x - 2.8271,
+Since there 86,400 seconds in a day, this is y, since 'x' is the grid size. 
+I got about 2533.26. I got this by plugging my functions into an online
+calculator and solving for x. Therefore, a grid of 2533.26 is the largest you can run in 24 hours with 20 trials
+
+
+
+
+
